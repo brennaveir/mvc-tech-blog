@@ -1,13 +1,31 @@
-const signupBtn = document.querySelector('.signup-form');
+const signupForm = document.querySelector('.signup-form');
 
 async function signUp(event) {
     event.preventDefault();
     const signUpUsername = document.querySelector('#signup-username').value.trim();
     const signUpPassword = document.querySelector('#signup-password').value.trim();
-    console.log({ signUpPassword, signUpUsername });
-//clears input after form submission
-    const clearInputs = document.querySelectorAll('input');
-clearInputs.forEach(input => input.value = '');
-}
 
-signupBtn.addEventListener("submit", signUp)
+    const newUser = {
+        username: signUpUsername,
+        password: signUpPassword
+    }
+
+   const response = await fetch('/api/users/login', {
+        body: JSON.stringify(newUser),
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    if (response.ok) {
+        console.log('!')
+    }
+    else {
+        console.log('nah')
+    }
+
+    //clears input after form submission 
+    signupForm.reset();
+}
+signupForm.addEventListener("submit", signUp)
