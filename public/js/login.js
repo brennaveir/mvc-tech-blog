@@ -13,6 +13,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      alert("You did it! Congrats!!!")
       document.location.replace('/');
     } else {
       alert(response.statusText);

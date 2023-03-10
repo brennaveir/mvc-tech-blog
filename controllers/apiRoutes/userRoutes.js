@@ -49,12 +49,12 @@ router.post('/login', async (req, res) => {
         .json({ message: "You're the best. I'm so proud of you!" });
     });
   } catch (error) {
-    return res.status(500).json({ message: 'You screwed it up' });
+    return res.status(500).json({ message: 'Try again' });
   }
 });
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
