@@ -16,7 +16,7 @@ Blogpost.init(
       allowNull: false,
     },
     contents: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     // username: {
     //   type: DataTypes.STRING,
