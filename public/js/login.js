@@ -1,4 +1,5 @@
 const signupForm = document.querySelector('.signup-form');
+const loginForm = document.querySelector('.login-form')
 
 async function signUp(event) {
     event.preventDefault();
@@ -9,23 +10,51 @@ async function signUp(event) {
         username: signUpUsername,
         password: signUpPassword
     }
-
-   const response = await fetch('/api/users/login', {
-        body: JSON.stringify(newUser),
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        }
-    })
-
+   
+    if (username && password) {
+        const response = await fetch('/api/users/signup', {
+            body: JSON.stringify(newUser),
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+    }
+    
     if (response.ok) {
-        console.log('!')
+        document.location.replace('/blogpost')
     }
     else {
-        console.log('nah')
+        alert(response.statusText);
     }
 
     //clears input after form submission 
     signupForm.reset();
 }
+
+const login = async (event) => {
+    event.preventDefault();
+  
+    // Collect values from the login form
+    const username = document.querySelector('#login-username').value.trim();
+    const password = document.querySelector('#login-password').value.trim();
+  
+    if (username && password) {
+      // Send a POST request to the API endpoint
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+        // If successful, redirect the browser to the profile page
+        document.location.replace('/blogpost');
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
+
 signupForm.addEventListener("submit", signUp)
+loginForm.addEventListener("submit", login)
