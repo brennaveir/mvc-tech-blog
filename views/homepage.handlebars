@@ -7,8 +7,8 @@
     <p class="card-text">{{contents}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
-    {{date_created}}
-    {{user.username}}
+     
+    Posted by: {{user.username}} on {{format_date blogpost.date_created}}
   </div>
 </div>
 {{/each}}

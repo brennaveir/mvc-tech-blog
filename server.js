@@ -1,14 +1,21 @@
 const path = require('path');
+
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars')
+
 const config = require('./config/connection');
 const routes = require('./controllers');
+
+// Import the custom helper methods
+const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create()
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
+
 
 app.use(session(config.sess));
 
