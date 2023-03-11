@@ -22,18 +22,20 @@ const signupFormHandler = async (event) => {
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
-
+  console.log("login form listening")
   // Collect values from the login form
   const username = document.querySelector('#login-username').value.trim();
   const password = document.querySelector('#login-password').value.trim();
 
   if (username && password) {
-    // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
+      // Send a POST request to the API endpoint
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    console.log(response.body)
 
     if (response.ok) {
       // If successful, redirect the browser to the home page

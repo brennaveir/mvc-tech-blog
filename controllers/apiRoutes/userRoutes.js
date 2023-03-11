@@ -7,8 +7,6 @@ router.post('/signup', async (req, res) => {
 
     const dbUser = await User.create(req.body);
 
-    // const plainUser = dbUser.get({ plain: true })
-    // console.log(plainUser)
 
     req.session.save(() => {
       req.session.user_id = dbUser.id;
@@ -24,6 +22,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.log('You made it!')
     const dbUser = await User.findOne({
       where: {
         username: req.body.username,
