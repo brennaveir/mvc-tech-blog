@@ -13,6 +13,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log("Yay!")
       document.location.replace('/');
     } else {
       alert(response.statusText);
@@ -38,6 +39,7 @@ const loginFormHandler = async (event) => {
     console.log(response.body)
 
     if (response.ok) {
+      console.log("Good work!")
       // If successful, redirect the browser to the home page
       document.location.replace('/');
     } else {

@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const { Blogpost, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
-//add withAuth
-router.get('/', async (req, res) => {
+//aonly visible when logged in
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const blogpostData = await Blogpost.findAll({
@@ -31,8 +31,8 @@ router.get('/', async (req, res) => {
 router.get('/login', async (req, res) => {
   res.render('login')
 });
-//add withAuth
-router.get('/blogpost', async (req, res) => {
+//Only visible when logged in
+router.get('/blogpost', withAuth, async (req, res) => {
   res.render('blogpost')
 });
 

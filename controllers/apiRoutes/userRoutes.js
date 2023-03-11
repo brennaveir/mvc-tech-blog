@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
         .json({ message: "Wrong username or password!" });
     }
 
-    const isValidPassword = await dbUser.comparePassword(req.body.password);
+    const isValidPassword = dbUser.checkPassword(req.body.password);
 
     if (!isValidPassword) {
       return res.status(404).json({ message: 'Wrong username or password' });
