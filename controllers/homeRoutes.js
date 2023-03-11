@@ -28,34 +28,13 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/blogpost/:id', async (req, res) => {
-  try {
-    const blogpostData = await Blogpost.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
-    });
-
-    const blogpost = blogpostData.get({ plain: true });
-
-    res.render('blogpost', {
-      ...blogpost,
-      loggedIn: req.session.loggedIn
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 router.get('/login', async (req, res) => {
   res.render('login')
 });
 //Only visible when logged in
-router.get('/blogpost', withAuth, async (req, res) => {
-  res.render('blogpost')
+router.get('/dashboard', withAuth, async (req, res) => {
+  res.render('dashboard')
 });
 
 
