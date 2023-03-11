@@ -8,5 +8,10 @@
         "title": "Sequelize",
         "contents":"Sequelize is an Object Relational Mapper for Node. js. Sequelize lets us connect to a database and perform operations without writing raw SQL queries. It abstracts SQL queries and makes it easier to interact with database models as objects.",
         "user_id": 2
+    },
+    {
+        "title": "SQL",
+        "contents": "Structured Query Language (SQL) is a standardized programming language that is used to manage relational databases and perform various operations on the data in them.",
+        "user_id": 1
     }
 ]
