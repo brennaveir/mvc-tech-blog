@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Blogpost } = require('../../models');
-const { User } = require('../../models')
+const { Blogpost, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -15,19 +14,18 @@ router.get('/', withAuth, async (req, res) => {
             ],
         });
 
-
-        const blogposts = blogpostData.map((blogpost) => {
-            if (req.session.user_id === user_id) {
-                blogpost.get({ plain: true })
-            }
-        })
-        // Pass serialized data and session flag into template
-        res.render('dashboard', {
-            blogposts,
-            loggedIn: req.session.loggedIn
-        });
+        if (Blogpost.user_id === User.id) {
+            // Serialize data so the template can read it
+            const blogposts = blogpostData.map((blogpost) => blogpost.get({ plain: true }));
+            // Pass serialized data and session flag into template
+            res.render('dashboard', {
+                blogposts,
+                loggedIn: req.session.loggedIn
+            });
+        }
     } catch (err) {
         res.status(500).json(err);
+
     }
 });
 
