@@ -1,13 +1,13 @@
-const newFormHandler = async (event) => {
+const newPostHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#blogpost-name').value.trim();
-    const content = document.querySelector('#blogpost-content').value.trim();
+    const title = document.querySelector('#blogpost-title').value.trim();
+    const contents = document.querySelector('#blogpost-content').value.trim();
   
-    if (name && content) {
+    if (title && contents) {
       const response = await fetch(`/api/blogpost`, {
         method: 'POST',
-        body: JSON.stringify({ name, content }),
+        body: JSON.stringify({ title, contents }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -15,6 +15,7 @@ const newFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.replace('/blogpost');
+        console.log(content)
       } else {
         alert('Failed to create blogpost');
       }
@@ -30,7 +31,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/blogpost');
       } else {
         alert('Failed to delete project');
       }
@@ -39,7 +40,7 @@ const newFormHandler = async (event) => {
   
   document
     .querySelector('.new-blogpost-form')
-    .addEventListener('submit', newFormHandler);
+    .addEventListener('submit', newPostHandler);
   
   document
     .querySelector('.blogpost-list')
