@@ -51,34 +51,37 @@ router.get('/blogpost/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+// // Use withAuth middleware to prevent access to route
+// router.get('/dashboard', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Blogpost }],
+//     });
+
+//     const user = userData.get({ plain: true });
+
+//     res.render('dashboard', {
+//       ...user,
+//       loggedIn: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+// Only visible when logged in
 router.get('/dashboard', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Blogpost }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...user,
-      loggedIn: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  res.render('dashboard', {
+    loggedIn: req.session.loggedIn
+  })
 });
-
 
 router.get('/login', async (req, res) => {
   res.render('login')
 });
-//Only visible when logged in
-router.get('/dashboard', withAuth, async (req, res) => {
-  res.render('dashboard')
-});
+
+
 
 
 module.exports = router;
