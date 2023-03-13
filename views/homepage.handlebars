@@ -1,10 +1,10 @@
 {{#each blogposts as |blogpost|}}
 <div class="card text-center">
   <div class="card-header bg-secondary font-weight-bold">
-    <h4><a href="/blogpost/{{id}}">{{title}}</a></h4>
+    <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
   </div>
   <div class="card-body">
-    <p class="card-text">{{contents}}</p>
+    <p class="card-text">{{blogpost.contents}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
      

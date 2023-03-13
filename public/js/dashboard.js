@@ -5,7 +5,7 @@ const newPostHandler = async (event) => {
     const contents = document.querySelector('#blogpost-content').value.trim();
   
     if (title && contents) {
-      const response = await fetch(`/api/dashboard`, {
+      const response = await fetch(`/api/blogpost`, {
         method: 'POST',
         body: JSON.stringify({ title, contents }),
         headers: {
@@ -20,12 +20,28 @@ const newPostHandler = async (event) => {
       }
     }
   };
+
+  const updateButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`api/blogpost/${id}`, {
+        method: 'PUT',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert('Failed to update project');
+      }
+    }
+  };
   
   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/dashboard/${id}`, {
+      const response = await fetch(`/dashboard/${id}`, {
         method: 'DELETE',
       });
   

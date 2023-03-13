@@ -23,17 +23,20 @@
     </form>
   </div>
 
-  {{#if blogpost.length}}
+  {{#if blogposts.length}}
   <div class="col-md-6 blogpost-list">
     <h3>Current Blogposts:</h3>
 
-    {{#each Blogposts as |blogpost|}}
+    {{#each blogposts as |blogpost|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4>{{content}}</h4>
+        <h4>{{blogpost.content}}</h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{blogpost.id}}">DELETE</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-warning" data-id="{{blogpost.id}}">UPDATE</button>
       </div>
     </div>
     {{/each}}
