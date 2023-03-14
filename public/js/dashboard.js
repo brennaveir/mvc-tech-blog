@@ -2,7 +2,7 @@ const newPostHandler = async (event) => {
     event.preventDefault();
   
     const title = document.querySelector('#blogpost-title').value.trim();
-    const contents = document.querySelector('#blogpost-content').value.trim();
+    const contents = document.querySelector('#blogpost-contents').value.trim();
   
     if (title && contents) {
       const response = await fetch(`/api/blogpost`, {
@@ -12,7 +12,7 @@ const newPostHandler = async (event) => {
           'Content-Type': 'application/json',
         },
       });
-  
+  console.log(response)
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
@@ -57,7 +57,7 @@ const newPostHandler = async (event) => {
     .querySelector('.new-blogpost-form')
     .addEventListener('submit', newPostHandler);
   
-  document
-    .querySelector('.blogpost-list')
-    .addEventListener('click', delButtonHandler);
+  // document
+  //   .querySelector('.blogpost-list')
+  //   .addEventListener('click', delButtonHandler);
   
