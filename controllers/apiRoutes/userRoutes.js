@@ -43,6 +43,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUser.id;
       return res
         .status(200)
         .json({ message: "You're the best. I'm so proud of you!" });

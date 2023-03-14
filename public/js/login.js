@@ -39,9 +39,10 @@ const loginFormHandler = async (event) => {
     console.log(response.body)
 
     if (response.ok) {
+       document.location.replace('/');
       console.log("Good work!")
       // If successful, redirect the browser to the home page
-      document.location.replace('/');
+     
     } else {
       alert("Oops, still not working. Try again");
     }
