@@ -42,7 +42,7 @@ router.get('/blogpost/:id', async (req, res) => {
 
     const blogpost = blogpostData.get({ plain: true });
 
-    res.render('blogpost', {
+    res.render('dashboard', {
       ...blogpost,
       loggedIn: req.session.loggedIn
     });
