@@ -14,9 +14,9 @@
         <button class="btn btn-sm btn-warning" data-id="{{blogpost.id}}">UPDATE</button>
       </div>
     </div>
-    {{/each}}
+    
   </div>
-  {{/if}}
+ 
 </div>
 
 <div class="row">
@@ -24,7 +24,8 @@
     <h2 class="m-3">Welcome, {{user.username}}!</h2>
   </div>
 </div>
-
+{{/each}}
+ {{/if}}
 <div class="card">
   <div class="card-header">
     <h3>Create a New Blogpost:</h3>
