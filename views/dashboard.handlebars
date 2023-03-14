@@ -1,10 +1,8 @@
-
-
 {{#each myBlogposts as |blogpost|}}
-{{#if myBlogposts.length}}
 <h1 class="m-2 p2 text-center">Welcome, {{user.username}}</h1>
 <h2 class="m-2 p-2 text-center">Your blogposts:</h2>
-{{/if}}
+
+
 <div class="card text-center mt-5 mb-5 blogpost-list">
   <div class="card-header bg-secondary font-weight-bold">
     <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
