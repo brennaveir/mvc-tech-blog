@@ -24,8 +24,8 @@ const newPostHandler = async (event) => {
   const updateButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`api/blogpost/${id}`, {
+      const userId = document.querySelector('.user-id').id
+      const response = await fetch(`api/blogpost/update/${id}`, {
         method: 'PUT',
       });
   
@@ -42,14 +42,14 @@ const newPostHandler = async (event) => {
     event.preventDefault()
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-  
+     
       const response = await fetch(`api/blogpost/${id}`, {
         method: 'DELETE',
         headers: { 'content-type': 'application/json'}
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         console.log(response)
         alert('Failed to delete project');
