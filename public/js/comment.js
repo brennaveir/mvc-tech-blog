@@ -1,6 +1,6 @@
 const newCommentHandler = async (event) => {
     event.preventDefault();
-  
+  console.log("success!")
     const comment = document.querySelector('#comment').value.trim();
    
   
