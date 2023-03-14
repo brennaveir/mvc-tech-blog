@@ -38,16 +38,20 @@ const newPostHandler = async (event) => {
   };
   
   const delButtonHandler = async (event) => {
+    console.log("clicked")
+    event.preventDefault()
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/dashboard/${id}`, {
+      const response = await fetch(`api/blogpost/${id}`, {
         method: 'DELETE',
+        headers: { 'content-type': 'application/json'}
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/');
       } else {
+        console.log(response)
         alert('Failed to delete project');
       }
     }
@@ -56,8 +60,12 @@ const newPostHandler = async (event) => {
   document
     .querySelector('.new-blogpost-form')
     .addEventListener('submit', newPostHandler);
+
+    document
+    .querySelector('#updateBtn')
+    .addEventListener('click', updateButtonHandler)
   
-  // document
-  //   .querySelector('.blogpost-list')
-  //   .addEventListener('click', delButtonHandler);
+  document
+    .querySelector('#deleteBtn')
+    .addEventListener('click', delButtonHandler);
   

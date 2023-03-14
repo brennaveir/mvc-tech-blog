@@ -1,7 +1,11 @@
-{{#if myBlogposts.length}}
-<h2 class="m-2 p-2 text-center">Your blogposts:</h2>
+
+
 {{#each myBlogposts as |blogpost|}}
-<div class="card text-center mt-5 mb-5">
+{{#if myBlogposts.length}}
+<h1 class="m-2 p2 text-center">Welcome, {{user.username}}</h1>
+<h2 class="m-2 p-2 text-center">Your blogposts:</h2>
+{{/if}}
+<div class="card text-center mt-5 mb-5 blogpost-list">
   <div class="card-header bg-secondary font-weight-bold">
     <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
   </div>
@@ -9,29 +13,30 @@
     <p class="card-text">{{blogpost.contents}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
-     Posted on {{format_date blogpost.date_created}}
+    Posted on {{format_date blogpost.date_created}}
+    <button type="button" class="btn btn-danger" data-id="{{blogpost.id}}" id="deleteBtn">Delete</button>
+    <button type="button" class="btn btn-warning" data-id={{blogpost.id}} id="updateBtn">Update</button>
   </div>
 </div>
 {{/each}}
-{{/if}}
- 
-  
+
+
 <div class="card text-center">
   <div class="card-header ">
     <h3>Create a New Blogpost:</h3>
-</div>
-<div class="card-body">
+  </div>
+  <div class="card-body">
     <form class="form new-blogpost-form">
       <div class="form-group">
         <label for="blogpost-title">Blogpost title:</label>
         <input class="form-input" type="text" id="blogpost-title" name="blogpost-title" />
       </div>
       <div class="form-group">
-       <label for="description" class="form-label">Description</label>
-  <textarea class="form-control" id="blogpost-contents" rows="3"></textarea>
-      <div class="form-group m-3">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="blogpost-contents" rows="3"></textarea>
+        <div class="form-group m-3">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </form>
   </div>
 </div>

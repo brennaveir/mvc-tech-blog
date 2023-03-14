@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blogpost }  = require('../../models');
+const { Blogpost, User }  = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -20,6 +20,7 @@ router.put('/:id', withAuth, async (req, res) => {
       const blogpost = await Blogpost.update(req.body, {
           where: {
               id: req.params.id,
+              user_id: req.session.user_id,
           },
       });
       if (!blogpost[0]) {
