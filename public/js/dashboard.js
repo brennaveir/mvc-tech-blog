@@ -95,8 +95,8 @@ document
 .addEventListener('click', updateFormHandler)
 
 document
-  .querySelector('.new-blogpost-form')
-  .addEventListener('submit', newPostHandler);
+  .querySelector('#new-blogpost-btn')
+  .addEventListener('click', newPostHandler);
 
 
 
