@@ -1,3 +1,4 @@
+
 const updateBtns = document.querySelectorAll('[id=updateForm]');
 const submitUpdatedBlogBtns = document.querySelectorAll(
   '[id=updateBtn]'
@@ -28,11 +29,11 @@ const newPostHandler = async (event) => {
 
 
 
-const updateFormHandler = (event) => {
-  if (event.currentTarget.getAttribute('update-id')) {
-    document.getElementById("update-form").style.display = 'flex'
-  }
-
+function updateFormHandler(event) {
+  const id = event.target.getAttribute('update-id');
+  const showForm = document.getElementById(`update-form-${id}`)
+  showForm.classList.remove('d-none')
+  
 }
 
 
@@ -89,12 +90,18 @@ submitUpdatedBlogBtns.forEach((el) =>
 );
 
 document
-  .getElementById('updateForm')
-  .addEventListener('click', updateFormHandler)
+.getElementById('updateForm')
+.addEventListener('click', updateFormHandler)
 
 document
-  .getElementById('new-blogpost-btn')
-  .addEventListener('click', newPostHandler);
+  .querySelector('.new-blogpost-form')
+  .addEventListener('submit', newPostHandler);
+
+
+
+
+  
+
 
 document
   .querySelector('.blogpost-list')
