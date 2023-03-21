@@ -2,7 +2,7 @@
   <div class="card-header bg-secondary font-weight-bold">
     <h4>{{title}}</h4>
   </div>
-  <div class="card-body">
+  <div class="card-body blog-id" id="{{id}}">
     <p class="card-text">{{contents}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
@@ -11,19 +11,20 @@
   </div>
 </div>
 
+{{!-- 
 <div class="card text-center m-3">
   <div class="card-header bg-secondary font-weight-bold">
     <h4>Comments</h4>
   </div>
-  
-  {{!-- <div class="card-body">
-    <p class="card-text">{{comment.comment}}</p>
+  <div class="card-body">
+    <p class="card-text">{{comment.text}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
      
-    Posted by: {{user.username}} on {{format_date comment.date_created}}
+    Posted by: {{user.username}} on {{comment.date_created}}
   </div>
 </div> --}}
+
 <div class="card text-center m-3">
   <div class="card-header bg-secondary font-weight-bold">
     <h4>Add a comment</h4>
@@ -32,7 +33,9 @@
     <form class="form new-comment">
   <label for="comment" class="form-label"></label>
   <textarea class="form-control" id="comment" rows="3"></textarea>
-  <button type="button" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
 </div> 
+
+<script src="/js/comment.js"></script>

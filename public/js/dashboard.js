@@ -21,11 +21,19 @@ const newPostHandler = async (event) => {
     }
   };
 
+
+    
+ function updateFormHandler () {
+  document.getElementById("update-form").style.display = 'flex'
+ } 
+  
+  
   const updateButtonHandler = async (event) => {
+    console.log("clicked")
+    
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-      const userId = document.querySelector('.user-id').id
-      const response = await fetch(`api/blogpost/update/${id}`, {
+      const response = await fetch(`api/blogpost/${id}`, {
         method: 'PUT',
       });
   
@@ -62,8 +70,13 @@ const newPostHandler = async (event) => {
     .addEventListener('submit', newPostHandler);
 
     document
+    .querySelector('#updateForm')
+    .addEventListener('click', updateFormHandler)
+    
+    document
     .querySelector('#updateBtn')
     .addEventListener('click', updateButtonHandler)
+
   
   document
     .querySelector('#deleteBtn')

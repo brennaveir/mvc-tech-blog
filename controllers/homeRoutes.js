@@ -35,8 +35,16 @@ router.get('/blogpost/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username'],
+          attributes: ['id', 'username'],
         },
+        // {
+        //   model: Comment,
+        //   attributes: ['id', 'text', 'user_id', 'date_created'],
+        //   include: {
+        //       model: User,
+        //       attributes: ['id', 'username'],
+        //   },
+        // },
       ],
     });
 
@@ -48,6 +56,39 @@ router.get('/blogpost/:id', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get('/blogpost/:id', async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      where: {
+        blogpost_id: req.body.blogpost_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id','username'],
+        },
+        {
+          model: Blogpost,
+          attributes: ['id']
+        }
+      ],
+    });
+    const blogpostComments = commentData.map((comments) => comments.get({ plain: true }));
+    console.log(blogpostComments);
+    const { loggedIn } = req.session;
+    if (loggedIn) {
+      res.render('dashboard', {
+        blogpostComments,
+        loggedIn: req.session.loggedIn,
+      });
+      return;
+    }
+    res.render('login');
+  } catch (err) {
+    console.log(err);
   }
 });
 
