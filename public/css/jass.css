@@ -340,3 +340,7 @@ template {
 #update-form {
   display: none;
 }
+
+#update-comment {
+  display: none;
+}

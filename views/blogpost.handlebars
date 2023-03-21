@@ -26,10 +26,30 @@
   <div class="card-footer text-muted bg-light text-center">
      
     Posted by: {{user.username}} on {{format_date date_created}}
+    
+    {{#if (user_validation current_user comment_author)}}
+  <button type="button" class="btn btn-danger" data-id="{{blogpost.id}}" id="deleteBtn">DELETE</button>
+<button type="button" id="update-comment-form" class= "btn btn-warning"  >UPDATE</button>
+  {{/if}}
   </div>
 </div>
 </div>
 {{/each}}
+<div class="card text-center m-3" id="update-comment">
+  <div class="card-header bg-secondary font-weight-bold">
+    <h4>Update comment</h4>
+  </div>
+  <div class="mb-3">
+    <form class="form new-comment">
+  <label for="comment" class="form-label"></label>
+  <textarea class="form-control" id="update-text" rows="3"></textarea>
+ <button type="submit" id="updateBtn" data-id="{{comment.id}}" class="btn btn-primary">UPDATE</button>
+</form>
+</div>
+</div> 
+
+
+
 
 
 <div class="card text-center m-3">
