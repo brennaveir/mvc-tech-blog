@@ -8,5 +8,25 @@
         "username": "apollobollo",
         "email": "apollo@bollo.com",
         "password": "password"
+    },
+    {
+        "username": "twydiddy",
+        "email": "twyla@diddy.com",
+        "password": "password"
+    },
+    {
+        "username": "duallabear",
+        "email": "dualla@bear.com",
+        "password": "password"
+    },
+    {
+        "username": "helopastry",
+        "email": "helo@pastry.com",
+        "password": "password"
+    },
+    {
+        "username": "theenbean",
+        "email": "athena@bean.com",
+        "password": "password"
     }
 ]

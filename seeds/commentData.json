@@ -3,5 +3,41 @@
     "text": "Good point!",
     "user_id": 1,
     "blogpost_id": 2
+},
+{
+    "text": "Totally!",
+    "user_id": 3,
+    "blogpost_id": 2
+},
+{
+    "text": "Good to know!",
+    "user_id": 4,
+    "blogpost_id": 2
+},
+{
+    "text": "I appreciate the info!",
+    "user_id": 3,
+    "blogpost_id": 2
+},
+{
+    "text": "That makes sense",
+    "user_id": 5,
+    "blogpost_id": 1
+},
+{
+    "text": "Interesting!",
+    "user_id": 4,
+    "blogpost_id": 1
+},
+{
+    "text": "Wow!",
+    "user_id": 3,
+    "blogpost_id": 3
+},
+{
+    "text": "Fascinating!",
+    "user_id": 3,
+    "blogpost_id": 3
 }
+
 ]
