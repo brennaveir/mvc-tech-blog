@@ -1,5 +1,4 @@
-
-const updateBtns = document.querySelectorAll('[id=updateBtn]');
+const updateBtns = document.querySelectorAll('[id=updateForm]');
 const submitUpdatedBlogBtns = document.querySelectorAll(
   '[id=updateBtn]'
 );
@@ -29,8 +28,11 @@ const newPostHandler = async (event) => {
 
 
 
-function updateFormHandler() {
-  document.getElementById("update-form").style.display = 'flex'
+const updateFormHandler = (event) => {
+  if (event.currentTarget.getAttribute('update-id')) {
+    document.getElementById("update-form").style.display = 'flex'
+  }
+
 }
 
 
@@ -38,10 +40,10 @@ const updateButtonHandler = async (event) => {
   event.preventDefault()
   console.log("clicked")
 
-  if (event.target.hasAttribute('data-id')) {
-    const title = document.querySelector('#update-title').value
-    const contents = document.querySelector("#update-contents").value
-    const id = event.target.getAttribute('data-id');
+  if (event.target.hasAttribute('update-id')) {
+    const title = document.querySelector('#update-title').value.trim()
+    const contents = document.querySelector("#update-contents").value.trim()
+    const id = event.target.getAttribute('update-id');
     console.log(id)
     const response = await fetch(`api/blogpost/${id}`, {
       method: 'PUT',
@@ -56,7 +58,7 @@ const updateButtonHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to update project');
+      alert('Failed to update blogpost');
     }
   }
 };
@@ -80,24 +82,19 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+
 updateBtns.forEach((el) => el.addEventListener('click', updateFormHandler));
 submitUpdatedBlogBtns.forEach((el) =>
   el.addEventListener('click', updateButtonHandler)
 );
 
 document
-.getElementById('updateForm')
-.addEventListener('click', updateFormHandler)
+  .getElementById('updateForm')
+  .addEventListener('click', updateFormHandler)
 
 document
-  .querySelector('.new-blogpost-form')
-  .addEventListener('submit', newPostHandler);
-
-
-
-
-  
-
+  .getElementById('new-blogpost-btn')
+  .addEventListener('click', newPostHandler);
 
 document
   .querySelector('.blogpost-list')
