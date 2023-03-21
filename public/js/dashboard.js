@@ -42,9 +42,10 @@ const updateButtonHandler = async (event) => {
   console.log("clicked")
 
   if (event.target.hasAttribute('update-id')) {
-    const title = document.querySelector('#update-title').value.trim()
-    const contents = document.querySelector("#update-contents").value.trim()
     const id = event.target.getAttribute('update-id');
+    const title = document.querySelector(`#update-title-${id}`).value.trim()
+    const contents = document.querySelector(`#update-contents-${id}`).value.trim()
+    
     console.log(id)
     const response = await fetch(`api/blogpost/${id}`, {
       method: 'PUT',
