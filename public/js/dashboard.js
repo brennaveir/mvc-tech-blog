@@ -29,12 +29,22 @@ const newPostHandler = async (event) => {
   
   
   const updateButtonHandler = async (event) => {
+    event.preventDefault()
     console.log("clicked")
     
     if (event.target.hasAttribute('data-id')) {
+const title = document.querySelector('#update-title').value
+const contents = document.querySelector("#update-contents").value
       const id = event.target.getAttribute('data-id');
+      console.log(id)
       const response = await fetch(`api/blogpost/${id}`, {
-        method: 'PUT',
+        method: 'PUT', 
+        
+        body: JSON.stringify({
+          title,
+          contents
+        }),
+        headers: { 'content-type': 'application/json'},
       });
   
       if (response.ok) {

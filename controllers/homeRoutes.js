@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blogpost, User } = require('../models');
+const { Blogpost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 //only visible when logged in
@@ -37,14 +37,14 @@ router.get('/blogpost/:id', async (req, res) => {
           model: User,
           attributes: ['id', 'username'],
         },
-        // {
-        //   model: Comment,
-        //   attributes: ['id', 'text', 'user_id', 'date_created'],
-        //   include: {
-        //       model: User,
-        //       attributes: ['id', 'username'],
-        //   },
-        // },
+        {
+          model: Comment,
+          attributes: ['id', 'text', 'user_id', 'date_created'],
+          include: {
+              model: User,
+              attributes: ['id', 'username'],
+          },
+        },
       ],
     });
 

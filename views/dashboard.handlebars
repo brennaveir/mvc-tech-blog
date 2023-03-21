@@ -29,13 +29,13 @@
     <form class="form new-blogpost-form">
       <div class="form-group">
         <label for="blogpost-title">Blogpost title:</label>
-        <input class="form-input" type="text" id="update-title-{{id}}" name="blogpost-title" placeholder="{{blogpost.title}}"/>
+        <input class="form-input" type="text" id="update-title" blog-id="{{id}}" name="blogpost-title" placeholder="{{blogpost.title}}"/>
       </div>
       <div class="form-group">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="update-contents-{{id}}" rows="3" >{{blogpost.contents}}</textarea>
+        <textarea class="form-control" id="update-contents" blog-id="{{id}} "rows="3">{{blogpost.contents}}</textarea>
         <div class="form-group m-3">
-          <button type="submit" id="updateBtn" data-id="{{blogpost.id}}" class="btn btn-primary">Submit Update</button>
+          <button type="submit" id="updateBtn" data-id="{{blogpost.id}}" class="btn btn-primary">UPDATE</button>
         </div>
     </form>
   </div>

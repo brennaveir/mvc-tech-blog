@@ -24,7 +24,9 @@
     Posted by: {{user.username}} on {{comment.date_created}}
   </div>
 </div> --}}
-
+{{#each comments}}
+<div>{{text}}</div>
+{{/each}}
 <div class="card text-center m-3">
   <div class="card-header bg-secondary font-weight-bold">
     <h4>Add a comment</h4>
