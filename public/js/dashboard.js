@@ -70,7 +70,7 @@ const delButtonHandler = async (event) => {
   event.preventDefault()
   if (event.target.hasAttribute('delete-id')) {
     const id = event.target.getAttribute('delete-id');
-
+console.log(id)
     const response = await fetch(`api/blogpost/${id}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }
@@ -90,19 +90,13 @@ submitUpdatedBlogBtns.forEach((el) =>
   el.addEventListener('click', updateButtonHandler)
 );
 
-document
-.getElementById('updateForm')
-.addEventListener('click', updateFormHandler)
+// document
+// .getElementById('updateForm')
+// .addEventListener('click', updateFormHandler)
 
 document
   .querySelector('#new-blogpost-btn')
   .addEventListener('click', newPostHandler);
-
-
-
-
-  
-
 
 document
   .querySelector('.blogpost-list')

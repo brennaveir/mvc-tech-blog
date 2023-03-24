@@ -6,43 +6,62 @@
     <p class="card-text">{{contents}}</p>
   </div>
   <div class="card-footer text-muted bg-light">
-     
+
     Posted by: {{user.username}} on {{format_date date_created}}
   </div>
 </div>
-
 
 
 
 <div class="card text-center m-3">
- <div class="card-header bg-secondary font-weight-bold">
+  <div class="card-header bg-secondary font-weight-bold">
     <h4>Comments</h4>
   </div>
-{{#each comments}}
-<div class="card text-center m-3"></div>
+  
+  {{#each comments}}
+  <div class="card text-center m-3 comment-list">
   <div class="card-body text-center">
     <p class="card-text">{{text}}</p>
   </div>
   <div class="card-footer text-muted bg-light text-center">
-     
-    Posted by: {{user.username}} on {{format_date date_created}}
-    </div>
+Posted by: {{user.username}} on {{format_date date_created}}
+  <button type="button" class="btn btn-danger" id="deleteBtn" delete-id="{{id}}" >DELETE</button>
+<button type="button" id="updateForm" update-id="{{id}}" class= "btn btn-warning"  >UPDATE</button>
+  </div>
+  </div>
+</div>
+  
+    
+ 
+
 </div>
 </div>
+<div class="d-none card text-center m-3" id="update-form-{{id}}">
+  <div class="card-header bg-secondary font-weight-bold">
+    <h4>Update comment</h4>
+  </div>
+  <div class="mb-3">
+    <form class="form update-comment">
+      <label for="update-comment" class="form-label"></label>
+      <textarea class="form-control" id="update-comment-text-{{id}}" rows="3">{{text}}</textarea>
+      <button type="click" id="updateBtn" update-id="{{id}}" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
 {{/each}}
-
-
 <div class="card text-center m-3">
   <div class="card-header bg-secondary font-weight-bold">
     <h4>Add a comment</h4>
   </div>
   <div class="mb-3">
     <form class="form new-comment">
-  <label for="comment" class="form-label"></label>
-  <textarea class="form-control" id="comment" rows="3"></textarea>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+      <label for="comment" class="form-label"></label>
+      <textarea class="form-control" id="comment" rows="3"></textarea>
+      <button type="submit" id="new-comment-btn" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
-</div> 
+
 
 <script src="/js/comment.js"></script>

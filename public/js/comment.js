@@ -1,3 +1,9 @@
+const updateBtns = document.querySelectorAll('[id=updateForm]');
+const submitUpdatedBlogBtns = document.querySelectorAll(
+  '[id=updateBtn]'
+);
+const delBtns = document.querySelectorAll('[id=deleteBtn]')
+
 const newCommentHandler = async (event) => {
     event.preventDefault();
   console.log("success!")
@@ -21,32 +27,34 @@ const newCommentHandler = async (event) => {
     }
   };
 
-      
- function updateFormHandler () {
-  document.getElementById("update-comment").style.display = 'flex'
- } 
-  
+  function updateCommentButton(event) {
+    const id = event.target.getAttribute('update-id');
+    const showForm = document.getElementById(`update-form-${id}`)
+    showForm.classList.remove('d-none')
     
-  const updateButtonHandler = async (event) => {
+  }
+  
+  
+  const updateCommentHandler = async (event) => {
     event.preventDefault()
     console.log("clicked")
-    
-    if (event.target.hasAttribute('data-id')) {
-const text = document.querySelector('#update-text').value
-
-      const id = event.target.getAttribute('data-id');
-      console.log(id)
-      const response = await fetch(`api/comment/${id}`, {
-        method: 'PUT', 
-        
+  
+    if (event.target.hasAttribute('update-id')) {
+      const id = event.target.getAttribute('update-id');
+      const text = document.querySelector(`#update-comment-text-${id}`).value.trim()
+      
+      console.log(text)
+      const response = await fetch(`/api/comment/${id}`, {
+        method: 'PUT',
+  
         body: JSON.stringify({
           text
         }),
-        headers: { 'content-type': 'application/json'},
+        headers: { 'content-type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.reload()
+        document.location.reload();
       } else {
         alert('Failed to update comment');
       }
@@ -56,37 +64,34 @@ const text = document.querySelector('#update-text').value
   const delButtonHandler = async (event) => {
     console.log("clicked")
     event.preventDefault()
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-     
-      const response = await fetch(`api/comment/${id}`, {
+    if (event.target.hasAttribute('delete-id')) {
+      const id = event.target.getAttribute('delete-id');
+  
+      const response = await fetch(`/api/comment/${id}`, {
         method: 'DELETE',
-        headers: { 'content-type': 'application/json'}
+        headers: { 'content-type': 'application/json' }
       });
   
       if (response.ok) {
-        document.location.reload()
+        document.location.reload();
       } else {
         console.log(response)
-        alert('Failed to delete project');
+        alert('Failed to delete comment');
       }
     }
-  };
+  };  
 
-  document
-  .querySelector('.new-comment')
-  .addEventListener('submit', newCommentHandler);
 
-  document
-    .querySelector('#update-comment-form')
-    .addEventListener('click', updateFormHandler)
-    
-    document
-    .querySelector('#updateBtn')
-    .addEventListener('click', updateButtonHandler)
+document
+  .querySelector('#new-comment-btn')
+  .addEventListener('click', newCommentHandler);
 
-  
-  document
-    .querySelector('#deleteBtn')
-    .addEventListener('click', delButtonHandler);
+  updateBtns.forEach((el) => el.addEventListener('click', updateCommentButton));
+submitUpdatedBlogBtns.forEach((el) =>
+  el.addEventListener('click', updateCommentHandler)
+);
+
+delBtns.forEach((el) => el.addEventListener('click', delButtonHandler))
+
+
   

@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Table of Contents (
+## Table of Contents 
 
 - [Description](#description)
 - [Usage](#usage)
@@ -16,7 +16,7 @@ A CMS-style blog site similar to a Wordpress site, where developers can publish 
 
 
 ## Usage
-
+Visit the deployed site [here](https://glacial-shore-57420.herokuapp.com/)
 
 ## Contributors
 Brenn Voyles
