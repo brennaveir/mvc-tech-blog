@@ -4,7 +4,9 @@ module.exports = {
       return date.toLocaleDateString();
     },
     user_validation: (current_user, comment_author) => {
-      if (comment_author === current_user) {
+      if (current_user === comment_author) {
+        console.log(current_user)
+        console.log(comment_author)
         return true;
       }
       else {

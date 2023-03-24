@@ -19,14 +19,17 @@
   </div>
   
   {{#each comments}}
+
   <div class="card text-center m-3 comment-list">
   <div class="card-body text-center">
     <p class="card-text">{{text}}</p>
   </div>
   <div class="card-footer text-muted bg-light text-center">
 Posted by: {{user.username}} on {{format_date date_created}}
+  {{#if (user_validation current_user user_id)}}
   <button type="button" class="btn btn-danger" id="deleteBtn" delete-id="{{id}}" >DELETE</button>
 <button type="button" id="updateForm" update-id="{{id}}" class= "btn btn-warning"  >UPDATE</button>
+ {{/if}}
   </div>
   </div>
 </div>

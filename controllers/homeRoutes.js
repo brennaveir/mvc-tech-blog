@@ -52,7 +52,8 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
 
     res.render('blogpost', {
       ...blogpost,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      current_user: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -77,12 +78,13 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
       ],
     });
     const blogpostComments = commentData.map((comments) => comments.get({ plain: true }));
-    console.log(blogpostComments);
+    // console.log(blogpostComments);
     const { loggedIn } = req.session;
     if (loggedIn) {
-      res.render('dashboard', {
+      res.render('blogpost', {
         blogpostComments,
         loggedIn: req.session.loggedIn,
+        current_user: req.session.user_id
       });
       return;
     }

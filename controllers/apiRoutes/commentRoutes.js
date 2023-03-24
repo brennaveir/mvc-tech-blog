@@ -19,6 +19,7 @@ router.put('/:id', async (req, res) => {
         const comment = await Comment.update(
             {
                 text: req.body.text,
+                user_id: req.session.user_id,
             },
             {
                 where: {
@@ -40,6 +41,7 @@ router.delete('/:id', async (req, res) => {
         const commentData = await Comment.destroy({
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
 
