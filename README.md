@@ -16,6 +16,10 @@ A CMS-style blog site similar to a Wordpress site, where developers can publish 
 
 
 ## Usage
+![Screenshot1](./screenshots/screencapture-glacial-shore-57420-herokuapp-2023-03-25-09_00_01.png) 
+![Screenshot2](./screenshots/screencapture-glacial-shore-57420-herokuapp-dashboard-2023-03-25-09_00_47.png) 
+![Screenshot3](./screenshots/screencapture-glacial-shore-57420-herokuapp-login-2023-03-25-09_01_03.png)      
+
 Visit the deployed site [here](https://glacial-shore-57420.herokuapp.com/)
 
 ## Contributors
